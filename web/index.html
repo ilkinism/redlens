@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Compare the contract you sent with the version that came back. Redlens lists what actually changed — money, dates, durations, wording — sets formatting differences aside, and writes the note you send back. Runs on your own machine; nothing is uploaded.">
+<title>Redlens — what changed in the contract that came back</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23fbfaf7'/%3E%3Cpath d='M8 10h16M8 16h16M8 22h10' stroke='%2322201d' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M6 16h20' stroke='%239b2c2c' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+  <h1>Redlens</h1>
+  <p class="standfirst">The contract came back clean. Here is what actually changed.</p>
+</header>
+
+<main>
+  <section class="sheet" id="chooser" aria-labelledby="chooser-heading">
+    <h2 id="chooser-heading">Choose the two versions</h2>
+    <p class="privacy">Both documents are read on this machine. Nothing is uploaded and
+      neither file is stored &mdash; nothing survives the comparison.</p>
+    <div class="slots">
+      <div class="slot">
+        <label for="before-file">The version you sent</label>
+        <input type="file" id="before-file" accept=".docx,.txt,.md,text/plain">
+        <p class="slot-note" id="before-note">No file chosen</p>
+      </div>
+      <div class="slot">
+        <label for="after-file">The version that came back</label>
+        <input type="file" id="after-file" accept=".docx,.txt,.md,text/plain">
+        <p class="slot-note" id="after-note">No file chosen</p>
+      </div>
+    </div>
+    <p class="formats">Redlens reads <code>.docx</code> and plain text. The negotiated
+      rounds are usually <code>.docx</code>.</p>
+    <p class="problem" id="problem" role="alert" hidden></p>
+    <button type="button" class="primary compare" id="compare" disabled>Compare the two versions</button>
+  </section>
+
+  <p class="chosen-bar" id="chosen-bar" hidden>
+    <span id="chosen-names"></span>
+    <button type="button" class="secondary" id="change-files">Compare different versions</button>
+  </p>
+
+  <section class="empty" id="empty" aria-labelledby="empty-heading">
+    <h2 id="empty-heading">Nothing to read yet</h2>
+    <p>Choose the version you sent and the version that came back. Redlens reads
+      both of them on this machine, lists what actually changed, sets the
+      formatting differences aside, and writes the note you send back.</p>
+  </section>
+
+  <p class="count-line" id="count-line" role="status" aria-live="polite">
+    Choose the version you sent and the version that came back.</p>
+
+  <section class="sheet unrelated" id="unrelated" hidden aria-labelledby="unrelated-heading">
+    <h2 id="unrelated-heading">These have almost nothing in common</h2>
+    <p id="unrelated-detail"></p>
+    <button type="button" class="secondary" id="unrelated-continue">Compare them anyway</button>
+  </section>
+
+  <div class="reading" id="reading" hidden>
+    <section class="walk" aria-labelledby="walk-heading">
+      <div class="walk-head">
+        <h2 id="walk-heading">The changes</h2>
+        <p class="position" id="position"></p>
+      </div>
+
+      <ol class="changes" id="changes"></ol>
+
+      <p class="nothing" id="nothing" hidden>Nothing substantive changed.</p>
+
+      <details class="set-aside" id="set-aside" hidden>
+        <summary><span id="set-aside-count"></span></summary>
+        <ol id="set-aside-list"></ol>
+      </details>
+    </section>
+
+    <aside class="note-panel" aria-labelledby="note-heading">
+      <h2 id="note-heading">The note to send back</h2>
+      <p class="note-state" id="note-state">Query a change and it starts writing itself.</p>
+      <pre class="note" id="note" hidden></pre>
+      <button type="button" class="primary" id="copy-note" disabled>Copy the note to send back</button>
+      <p class="copied" id="copied" role="status" aria-live="polite"></p>
+      <h3 class="shortcuts-heading">Keyboard</h3>
+      <dl class="shortcuts">
+        <dt>J</dt><dd>next change</dd>
+        <dt>K</dt><dd>previous change</dd>
+        <dt>A</dt><dd>accept</dd>
+        <dt>Q</dt><dd>query</dd>
+        <dt>C</dt><dd>copy the note</dd>
+      </dl>
+    </aside>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+.DS_Store
+
+# Secrets never belong in a repository
+.env
+.env.*
+
+# Redlens keeps no database. This is here so that one can never appear by
+# accident in a fork that adds storage.
+*.db
+*.sqlite3
+
+# A contributor's own contracts must not follow them into a commit. The test
+# fixtures are written by the tests themselves, so nothing here is needed.
+*.docx
+*.doc
