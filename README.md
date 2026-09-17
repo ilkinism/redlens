@@ -1,5 +1,7 @@
 # Redlens
 
+*[Azərbaycan dili](README.az.md)*
+
 The contract came back clean. Here is what actually changed.
 
 ![Six changes found in a returned contract, marked the way a person marks up a page](docs/screenshots/02-what-actually-changed.png)
